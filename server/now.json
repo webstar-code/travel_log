@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "name": "travelAPI",
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "src/index.js"
+    }
+  ],
+  "alias": [
+    "travelAPI"
+  ],
+  "env": {
+    "PORT": "1337",
+    "DATABASE_URL": "mongodb+srv://rest:rest123@cluster0-k1wi3.mongodb.net/test?retryWrites=true&w=majority",
+    "CORS_ORIGIN": "https://travel-log-app-ebon.now.sh"
+  }
+}
