@@ -1,13 +1,16 @@
 const express = require('express');
 const LogEntry = require('../model/LogEntryModel');
-
+const User = require('../model/UserModel');
+const verify = require('./verifyjwt');
 const route = express.Router();
 
-route.get('/', async (req, res, next) => {
+route.get('/logs',verify, async (req, res, next) => {
 
     try {
-        const entries = await LogEntry.find();
+        // const entries = await LogEntry.findOne({email: req.user.email});
+        const entries = await LogEntry.find({email: req.user.email});
         res.json(entries);
+        console.log("entries",req.user);
 
     } catch (error) {
         next(error);
@@ -15,7 +18,7 @@ route.get('/', async (req, res, next) => {
 
 });
 
-route.post('/', async (req, res, next) => {
+route.post('/logs', async (req, res, next) => {
     try {
         const Log = new LogEntry(req.body);
         const createdlog = await Log.save();

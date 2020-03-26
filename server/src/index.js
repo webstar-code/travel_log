@@ -7,6 +7,8 @@ const mongoose  = require('mongoose');
 require('dotenv').config();
 
 const logroute = require('./routes/logs');
+const authroute = require('./routes/auth');
+
 
 const middlewares = require('./middlewares/middleware');
 
@@ -20,7 +22,7 @@ app.use(cors({
 
 app.use(express.json());
 
-mongoose.connect(process.env.DATABASE_URL, 
+mongoose.connect(process.env.LOCAL_DB_URL, 
 {useNewUrlParser: true,  useUnifiedTopology: true  }, 
 () => {
     console.log("CONNECTED TO DB");
@@ -32,7 +34,9 @@ app.get('/', (req,res) => {
     });
 });
 
-app.use('/api/logs',logroute);
+app.use('/',logroute);
+app.use('/',authroute);
+
 
 // Handling 404 errors
 app.use(middlewares.notFound);

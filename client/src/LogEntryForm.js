@@ -11,7 +11,7 @@ const LogEntryform = ({ location , onClose}) => {
             setloading(true);
             data.latitude = location.latitude;
             data.longitude = location.longitude;
-            console.log(data);
+            data.auth_token = localStorage.getItem('auth-token');
             const logEntry = await AddEntry(data, error);
             console.log(logEntry);
             onClose();
@@ -26,6 +26,8 @@ const LogEntryform = ({ location , onClose}) => {
 
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
             {error ? <h2>Error</h2> : null}
+            <label htmlFor="email">Email</label>
+            <input type="email" ref={register} name="email" required={true}></input>
             <label htmlFor="title">Title</label>
             <input name="title" ref={register} required={true}></input>
             <label htmlFor="comments">Comment</label>
@@ -37,6 +39,7 @@ const LogEntryform = ({ location , onClose}) => {
             <label htmlFor="visitDate">visited Date</label>
             <input name="visitDate" type="date" ref={register} required={true}></input>
             <button type="submit">{loading ? 'Loading...' : 'Add Entry'}</button>
+
         </form>
     )
 
