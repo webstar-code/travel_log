@@ -2,43 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-
-
-
-const Heading = styled.h1`
-    margin: 20px 30px;
-`;
-
-const Form = styled.form`
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-`;
-
-const Label = styled.label`
-    margin: 5px 30px;
-`;
-
-
-
-const Input = styled.input`
-    width: 50vw;
-    margin: 5px 30px;
-    padding: 10px 5px;
-    font-size: 16px;
-
-`;
-
-const Button = styled.button`
-    width: 20vw;
-    font-size: 20px;
-    margin: 10px auto;
-    padding: 10px 30px;
-    cursor: pointer;
-
-`;
-
+import {Container, Heading, Form, Label, Input, Button } from './styles/SignupStyles'
 
 
 const Signup = () => {
@@ -54,9 +18,7 @@ const Signup = () => {
             },
             body: JSON.stringify(data)
         });
-        console.log(user.status);
         const result = await user.json();
-        console.log(result);
         if (user.status == 200) {
             setredirect('/login');
         } else {
@@ -71,7 +33,7 @@ const Signup = () => {
 
 
     return (
-        <div>
+        <Container>
             <Heading>Sign up</Heading>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Label htmlFor="Name">Name: </Label>
@@ -89,8 +51,7 @@ const Signup = () => {
             </Form>
 
 
-        </div>
-
+        </Container>
 
 
 
