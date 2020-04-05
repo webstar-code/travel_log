@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {Container, Heading, Form, Label, Input, Button } from './styles/SignupStyles'
 
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:1337' : 'https://travel-log-api-five.now.sh';
 
 const Signup = () => {
     const [redirect, setredirect] = useState(null);
@@ -11,7 +12,7 @@ const Signup = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = async data => {
         console.log(data);
-        const user = await fetch('http://localhost:1337/register', {
+        const user = await fetch(`${API_URL}/register`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

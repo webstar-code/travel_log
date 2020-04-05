@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import px2vw from './px2vw'
 
 export const Container = styled.div`
-    font-size: ${px2vw(36)};
+    font-size: 1.1rem;
     background-color: #ffa41b;
 `;
 
@@ -21,7 +21,7 @@ export const Item = styled.li`
     color: #000839;
     text-decoration: none;
     text-transform: uppercase;
-    padding: ${px2vw(10)} 0px;
+    padding: 0.5rem;
 
 
 `;

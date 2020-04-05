@@ -126,7 +126,7 @@ const Map = () => {
           closeButton={true}
           closeOnClick={false}
           onClose={() => setAddEntries(null)}
-          anchor="top" 
+          anchor="top-left" 
           >
             <div className="EntryPopup">
               <LogEntryform onClose={() => {

@@ -16,13 +16,14 @@ const app = express();
 
 app.use(morgan('common'));
 app.use(helmet());
-app.use(cors({
-    origin: process.env.CORS_ORIGIN,
-}));
+// app.use(cors({
+//     origin: process.env.CORS_ORIGIN,
+// }));
 
+app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.LOCAL_DB_URL, 
+mongoose.connect(process.env.DATABASE_URL, 
 {useNewUrlParser: true,  useUnifiedTopology: true  }, 
 () => {
     console.log("CONNECTED TO DB");
