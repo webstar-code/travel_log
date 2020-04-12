@@ -2,10 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     /* width: 920px; */
-    width: 70%; 
+    width: 80%; 
     margin: auto;
 
     @media(max-width:620px) {
+        /* width:90%; */
         margin:auto;
     }
 `;
@@ -24,7 +25,7 @@ export const Caption = styled.p`
     font-size: 3.25rem;
     font-weight: 600;
     @media(max-width:620px) {
-        font-size: 2rem;
+        font-size: 2.75rem;
     }
 
 `;
@@ -36,7 +37,7 @@ export const Para = styled.p`
     font-size: 1.25rem;
     font-weight: 100px;
     @media(max-width:620px) {
-        font-size: 1rem;
+        font-size: 1.25rem;
     }
     
 `;
@@ -62,7 +63,10 @@ export const Instruction = styled.div`
     @media(max-width:620px) {
         flex-direction: column;
         background-color: transparent;
+    justify-content: space-between;
+
         padding: 0;
+        color: white;
     }
 `;
 
@@ -84,6 +88,7 @@ export const Screenshot = styled.img`
     width: 300px;
     height: 200px;
     box-shadow: 0px 1px 20px 1px black;
+    border-radius: 20px;
     @media(max-width:620px) {
         width:100%;
         height:80%;
@@ -97,13 +102,17 @@ export const H4 = styled.h3`
     margin: 0;
     font-size: 2rem;
     @media(max-width:620px) {
+        margin-top: 1em;
         font-size: 1.5rem;
     }
 `;
 
 export const P = styled.p`
 font-size: 1.25rem;
-word-wrap: break-word
+word-wrap: break-word;
+margin-bottom: 4em;
+
+
     
 `;
 

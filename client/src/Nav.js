@@ -20,12 +20,11 @@ export default function Nav(props) {
     const handleopen = () => {
         setopen(!open);
     }
-    console.log(open);
 
     return (
         <>
         <Navbar>    
-                <div>
+                    <div>
                     <Logo>travel-Log</Logo>
                     </div>
                 <List>

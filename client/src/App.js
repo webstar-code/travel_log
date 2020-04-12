@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import GlobalStyles from './styles/GlobalStyles'
 import {Footer, H4 } from './styles/HomeStyles'
@@ -22,8 +22,9 @@ const Setbimg = (x) => setbimg(x);
 
 const Image = styled.div`
   background-image: url(${bimg});
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   
   @media(max-width: 620px) {
     background-image: none;
@@ -38,17 +39,21 @@ const Image = styled.div`
 
     <Image>
 
-    <Nav Setbimg={Setbimg}></Nav>
     <Switch>
       <Route exact path="/">
+    <Nav Setbimg={Setbimg}></Nav>
         <Home />
       </Route>
       
       <Route path="/login">
+    <Nav Setbimg={Setbimg}></Nav>
+        
         <Login />
       </Route>
 
      <Route path="/signup">
+    <Nav Setbimg={Setbimg}></Nav>
+      
        <Signup />
      </Route>
 

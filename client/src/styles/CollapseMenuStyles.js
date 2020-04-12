@@ -23,5 +23,7 @@ export const Item = styled.li`
     text-transform: uppercase;
     padding: 0.5rem;
 
-
+    :hover {
+        text-decoration: underline;
+    }
 `;

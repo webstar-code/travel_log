@@ -1,6 +1,7 @@
 import React from 'react'
 import marker from './images/marker.png'
-import s from './images/download (1).jfif'
+import s from './images/Capture.PNG'
+
 import { Container,Intro, Caption, Para, Img, Instruction, Inst, Screenshot, H4, P, Footer } from './styles/HomeStyles'
 
 export default function Home() {
@@ -30,6 +31,7 @@ export default function Home() {
                     <H4>Add Details</H4>
                     <P>Add description,comments,images,date and etc..</P>
                 </Inst>
+
             </Instruction>
 
         

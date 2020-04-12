@@ -11,6 +11,9 @@ route.get('/logs',verify, async (req, res, next) => {
         const entries = await LogEntry.find({email: req.user.email});
         res.json(entries);
         // console.log("entries",req.user);
+        const user = await User.find({email: req.user.email});
+        
+
 
     } catch (error) {
         next(error);

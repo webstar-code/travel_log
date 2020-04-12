@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const logroute = require('./routes/logs');
 const authroute = require('./routes/auth');
-
+const postroute = require('./routes/posts');
 
 const middlewares = require('./middlewares/middleware');
 
@@ -16,11 +16,11 @@ const app = express();
 
 app.use(morgan('common'));
 app.use(helmet());
-// app.use(cors({
-//     origin: process.env.CORS_ORIGIN,
-// }));
+app.use(cors({
+    origin: process.env.CORS_ORIGIN,
+}));
 
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 mongoose.connect(process.env.DATABASE_URL, 
@@ -37,7 +37,7 @@ app.get('/', (req,res) => {
 
 app.use('/',logroute);
 app.use('/',authroute);
-
+app.use('/',postroute);
 
 // Handling 404 errors
 app.use(middlewares.notFound);

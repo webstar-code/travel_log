@@ -19,7 +19,9 @@
   "env": {
     "PORT": "1337",
     "DATABASE_URL": "mongodb+srv://rest:rest123@cluster0-k1wi3.mongodb.net/test?retryWrites=true&w=majority",
-    "CORS_ORIGIN": "https://travel-log-app-ebon.now.sh"
+    "CORS_ORIGIN": "https://travel-log-app-ebon.now.sh",
+    "TOKEN_SECRET": "asdasdasd"
+
     
   }
 }

@@ -20,3 +20,14 @@ export async function AddEntry(data) {
     });
     return  response.json();
 }
+
+export async function Userinfo() {
+    const token = await localStorage.getItem('auth-token');
+    const user = await fetch(`${API_URL}/posts`,{
+        headers: {
+            'auth-token': token
+        }
+    });
+
+    return await user.json();
+}
