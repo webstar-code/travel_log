@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import {Container, Heading, Form, Label, Input, Button } from './styles/SignupStyles'
+import {Container, Heading, Form, Label, Input, Button, Error } from './styles/SignupStyles'
 
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:1337' : 'https://travel-log-api-five.now.sh';
 
 const Signup = () => {
     const [redirect, setredirect] = useState(null);
@@ -11,7 +11,7 @@ const Signup = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = async data => {
         console.log(data);
-        const user = await fetch('http://localhost:1337/register', {
+        const user = await fetch(`${API_URL}/register`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -19,7 +19,7 @@ const Signup = () => {
             body: JSON.stringify(data)
         });
         const result = await user.json();
-        if (user.status == 200) {
+        if (user.status === 200) {
             setredirect('/login');
         } else {
             seterror(result);
@@ -36,14 +36,15 @@ const Signup = () => {
         <Container>
             <Heading>Sign up</Heading>
             <Form onSubmit={handleSubmit(onSubmit)}>
+            {error ? <Error>{error}</Error> : null}
+
                 <Label htmlFor="Name">Name: </Label>
-                <Input type="text" name="name" ref={register}></Input>
+                <Input type="text" name="name" ref={register} placeholder="Name"></Input>
                 <Label htmlFor="Email">Email: </Label>
-                <Input type="email" name="email" ref={register}></Input>
+                <Input type="email" name="email" ref={register}  placeholder="Email"></Input>
                 <Label htmlFor="password">Password: </Label>
-                <Input type="password" name="password" ref={register}></Input>
+                <Input type="password" name="password" ref={register}  placeholder="Password"></Input>
                 <Button type="submit">Sign up</Button>
-                {error ? <h1>{error}</h1> : null}
                 {redirect ? <Redirect to={{
                     pathname: '/login'
                 }}></Redirect> : null}

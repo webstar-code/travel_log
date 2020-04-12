@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import { Redirect } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 
-import { Container, Heading, Form, Label, Input, Button } from './styles/LoginStyles'
+import { Container, Heading, Form, Label, Input, Button,Error } from './styles/LoginStyles'
+
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:1337' : 'https://travel-log-api-five.now.sh';
 
 const Login = () => {
 
@@ -11,8 +12,7 @@ const Login = () => {
     const { register, handleSubmit } = useForm();
     const [respond, setrespond] = useState(null)
     const onSubmit = async data => {
-        console.log(data);
-        const user = await fetch('http://localhost:1337/login', {
+        const user = await fetch(`${API_URL}/login`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -20,7 +20,6 @@ const Login = () => {
             body: JSON.stringify(data)
         });
         const result = await user.json();
-        console.log(result);
         if (user.status === 200) {
             localStorage.setItem('auth-token', result.token);
 
@@ -33,23 +32,25 @@ const Login = () => {
     };
 
     return (
-        <Container>
-            <Heading>Login</Heading>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-                <Label htmlFor="Email">Email: </Label>
-                <Input type="email" name="email" ref={register}></Input>
-                <Label htmlFor="password">Password: </Label>
-                <Input type="password" name="password" ref={register}></Input>
-                <Button type="submit">Login</Button>
+        <>
+            <Container>
+                <Heading>Login</Heading>
+                {/* {respond ? <h1>{respond}</h1> : null} */}
+                {respond ? <Error>{respond}</Error> : null}
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                    <Label htmlFor="Email">Email: </Label>
+                    <Input type="email" name="email" ref={register} placeholder="Email"></Input>
+                    <Label htmlFor="password">Password: </Label>
+                    <Input type="password" name="password" ref={register} placeholder="Password"></Input>
+                    <Button type="submit">Login</Button>
 
-            </Form>
-            {respond ? <h1>{respond}</h1> : null}
-            {redirect ? <Redirect to={{
-                pathname: `${redirect}`
-            }}></Redirect> : null}
+                </Form>
+                {redirect ? <Redirect to={{
+                    pathname: `${redirect}`
+                }}></Redirect> : null}
 
-        </Container>
-
+            </Container>
+        </>
     )
 
 }

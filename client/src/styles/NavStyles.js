@@ -1,53 +1,60 @@
-import styled from 'styled-components';
-import px2vw from './px2vw';
+import styled from 'styled-components'
 
 export const Navbar = styled.div`
+    width: 70%;
     display: flex;
     flex-direction: row;
-    background-color: #000839;
-    color: #ffa41b;
-    padding: ${px2vw(20)} ${px2vw(40)};
-    font-size: ${px2vw(22)};
-    font-family: sans-serif;
-    justify-content: space-between
-
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    background: transparent;
+    text-transform: uppercase;
+    color: white;
+    @media (max-width: 620px) {
+        width: 90%;
+    }
 `;
 
+
+
 export const Logo = styled.h1`
-    text-transform: uppercase;
-    font-size: ${px2vw(68)};
-    font-weight: bold;
-    letter-spacing: 2px;
-    line-height: 1px;
-    /* margin-right: ${px2vw(100)}; */
+    /* margin: 0 12em 0 0; */
+    font-size:2rem;
+    font-weight: 500;
+    @media (max-width: 620px) {
+     font-size: 1.5rem;
+     font-weight: 300px;
+     margin:0.5em 0; 
+    }
+`;
+
+export const Item = styled.p`
+    margin-right: 2.75rem;
+    font-size: 1.25rem;
+    color: white;
+    font-weight: 500;
+
+    :hover{
+        text-decoration: underline;
+    }
 `;
 
 export const List = styled.ul`
-    display: grid;
-    grid-template-columns: auto auto auto;
-    align-items: center;
     list-style-type: none;
-    padding: 0;
-
-    @media (max-width: 768px) {
+    display: flex;
+    margin-left: 2rem;
+    
+    flex-direction: row;
+    @media (max-width: 620px) {
         display: none;
     }
 
 `;
-
-
-
-export const Item = styled.li`
-    color: #ffa41b;
-    text-decoration: none;
-    text-transform: uppercase;
-    margin-right: ${px2vw(100)};
-    `;
 
 export const BurgerWrapper = styled.div`
-    margin: 0;
-    @media (min-width: 768px) {
-        display: none;
+    margin:0;
+    @media(max-width: 620px) {
+        display: block;
     }
-
 `;
+

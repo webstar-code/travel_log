@@ -6,6 +6,7 @@ const verify = require('./verifyjwt');
 const { registervalidations, loginvalidation } = require('../validate/validate');
 
 
+
 router.get('/register', async (req, res) => {
     // res.json({
     //     message: "registration Route"
@@ -30,12 +31,12 @@ router.post('/register', async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedpassword = await bcrypt.hash(req.body.password, salt);
 
-    // const user =  new User({
-    //     name: req.body.name,
-    //     email: req.body.email,
-    //     password: hashedpassword,
-    // });
-    const user = new User(req.body);
+    const user =  new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: hashedpassword,
+    });
+    // const user = new User(req.body);
     try {
         const savedData = await user.save();
         console.log("saved");

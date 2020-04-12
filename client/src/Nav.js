@@ -5,9 +5,13 @@ import CollapseMenu from './CollapseMenu'
 
 import { Navbar,Logo , List, Item, BurgerWrapper} from './styles/NavStyles'
 import BurgerMenu from './BurgerMenu';
+import mountains from './styles/mountains.jpg';
+import city from './images/city1920x1080.jpg'
 
-export default function Nav() {
+
+export default function Nav(props) {
     const styles = {
+        
         textDecoration: 'none'
     }
 
@@ -16,23 +20,22 @@ export default function Nav() {
     const handleopen = () => {
         setopen(!open);
     }
-    console.log(open);
 
     return (
         <>
-        <Navbar>
+        <Navbar>    
+                    <div>
                     <Logo>travel-Log</Logo>
-
-            <List>
-         
-                <Link style={styles} to={'/'}>
-                    <Item>
+                    </div>
+                <List>
+                <Link style={styles} to={'/'} onClick={() => props.Setbimg(city)} >
+                    <Item > 
                         Home
                     </Item>
                 </Link>
 
-                <Link style={styles} to={'/login'}>
-                    <Item>
+                <Link style={styles} to={'/login'}  onClick={() => props.Setbimg(mountains)}>
+                    <Item >
                         login
                     </Item>
                 </Link>
@@ -42,7 +45,7 @@ export default function Nav() {
                         signup
                     </Item>
                 </Link>
-            </List>
+                </List>
             <BurgerWrapper>
             <BurgerMenu open={open} handleopen={handleopen}/>
 
